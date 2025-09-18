@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindBridge</title>
+  <link rel="stylesheet" href="../2-styles/styles.css">
+</head>
+
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources] - AI Mental Health Support | MindBridge</title>
+    <link rel="stylesheet" href="styles.css">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #232528;
+    color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+}
+.nav-logo h2 {
+    color: var(--color-white);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    display: flex;
+    align-items: center;
+    gap: var(--space-9);
+}
+
+.navbar {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%);
+    padding: var(--space-16) 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 10px
+}
+
+.resource-container {
+   max-width: 1200px;
+   margin: 100px auto 0;
+   padding: 20px;
+   min-height: calc(100vh - 120px);
+}
+
+.resource-header h1 {;
+    color: #fff;
+    padding: 24px 0 8px 0;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 9px;
+}
+
+.resource-header p {
+    text-align: center;
+    color: #fff;
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.resource-header {
+    max-width: 950px;
+    margin: auto;
+    padding: 36px 18px;
+}
+.card {
+    background: #313338;
+    border-radius: 16px;
+    margin: 24px 0;
+    padding: 26px 28px 22px 28px;
+    box-shadow: 0 4px 16px 0 rgba(44,79,107,0.12);
+    transition: box-shadow .3s;
+    position: relative;
+}
+.card h3 {
+    margin: 0 0 8px 0;
+}
+.card p {
+    margin: 0 0 10px 0;
+    color: #bbefff;
+}
+.read-more-btn {
+    display: inline-block;
+    color: #2bb5be;
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 1rem;
+    transition: color .2s;
+}
+.read-more-btn:hover {
+    color: #ffe08a;
+}
+.card-detail {
+    display: none;
+    margin-top: 18px;
+    background: #22242a;
+    border-radius:12px;
+    padding:20px;
+}
+.card-detail img {
+    max-width: 340px;
+    width: 100%;
+    border-radius:10px;
+    margin-bottom:18px;
+    display: block;
+}
+.card-detail p {
+    color: #f0e9ef;
+    font-size: 1.02rem;
+}
+.close-btn {
+    background: #2bb5be;
+    color: #232528;
+    border:none;
+    float:right;
+    font-weight:bold;
+    font-size:1rem;
+    border-radius:6px;
+    padding: 6px 14px;
+    margin-top: -14px;
+    margin-bottom: 14px;
+    cursor:pointer;
+}
+@media (max-width: 720px) {
+    .container { padding: 22px 5px; }
+    .card, .card-detail { padding:12px; }
+}
+</style>
+ <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><i class="fas fa-brain"></i> MindBridge</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="1-index.html">Home</a></li>
+                <li><a href="2-dashboard.html">Dashboard</a></li>
+                <li><a href="4-chatbot.html">AI Support</a></li>
+                <li><a href="3-habit-tracker.html">Habit Tracker</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <div class="resource-container">
+        <!-- Header -->
+        <div class="resource-header">
+            <h1><i class="fas fa-chart-line"></i>Mental Health Resources</h1>
+            <p>Build positive habits that support your mental health and academic success</p>
+        </div>
+
+         <div class="container">
+
+    <!-- Crisis Support Card -->
+    <div class="card">
+        <h3>National Suicide Prevention Lifeline</h3>
+        <p>988 - Available 24/7 for anyone in crisis or emotional distress.</p>
+        <button class="read-more-btn" onclick="openDetail('detail1')">Read More →</button>
+        <div class="card-detail" id="detail1">
+            <button class="close-btn" onclick="closeDetail('detail1')">Close</button>
+            <img src="https://plus.unsplash.com/premium_photo-1683141256844-9b6a7b00eddd?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8c3VpY2lkZSUyMHByZXZlbnRpb258ZW58MHx8MHx8fDA%3D" alt="Crisis Support">
+            <p>If you or someone you know is struggling, contact 988 for immediate, confidential support from trained counselors. Talk or text anytime, day or night.<br>
+            <b>Why call?</b> Speaking with someone can help de-escalate a crisis, offer resources, and provide hope.</p>
+        </div>
+    </div>
+
+    <!-- Self-Help Card -->
+    <div class="card">
+        <h3>Guided Meditation Sessions</h3>
+        <p>Relax your mind and reduce stress with science-backed meditation tracks for any mood.</p>
+        <button class="read-more-btn" onclick="openDetail('detail2')">Read More →</button>
+        <div class="card-detail" id="detail2">
+            <button class="close-btn" onclick="closeDetail('detail2')">Close</button>
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVkaXRhdGlvbnxlbnwwfHwwfHx8MA%3D%3Ds" alt="Meditation Session">
+            <p>Regular meditation helps calm anxiety, improves concentration, and offers a chance for meaningful reflection. Try our audio guides, from 5 to 20 minutes.<br>
+            <b>How?</b> Find a quiet spot, follow the breathing pace, and allow thoughts to come and go freely.
+            </p>
+        </div>
+    </div>
+
+    <!-- Educational Card -->
+    <div class="card">
+        <h3>Understanding Anxiety and Depression</h3>
+        <p>Learn the facts, signs, and science behind the most common student mental health challenges.</p>
+        <button class="read-more-btn" onclick="openDetail('detail3')">Read More →</button>
+        <div class="card-detail" id="detail3">
+            <button class="close-btn" onclick="closeDetail('detail3')">Close</button>
+            <img src="https://images.unsplash.com/photo-1526725702345-bdda2b97ef73?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZGVwcmVzc2lvbnxlbnwwfHwwfHx8MA%3D%3D" alt="Anxiety and Depression">
+            <p>Anxiety and depression affect millions. If you experience persistent sadness, worry, or loss of interest, know that help is available and recovery is possible.<br>
+            <b>Resources:</b> Connect with campus counselors, peer support, or read stories from others who have found strategies to cope and thrive.
+            </p>
+        </div>
+    </div>
+
+    <!-- Add more cards below as needed -->
+    <!-- Example: -->
+    <div class="card">
+        <h3>Stress Management Techniques</h3>
+        <p>Quick exercises and habits to control stress and improve daily resilience.</p>
+        <button class="read-more-btn" onclick="openDetail('detail4')">Read More →</button>
+        <div class="card-detail" id="detail4">
+            <button class="close-btn" onclick="closeDetail('detail4')">Close</button>
+            <img src="https://images.unsplash.com/photo-1709718499883-7267d6ffae9c?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHN0cmVzc3xlbnwwfHwwfHx8MA%3D%3D" alt="Stress Management">
+            <p>Practice grounding techniques, mindful breathing, and small daily routines to keep stress in check. Learn what works best for you!
+            </p>
+        </div>
+    </div>
+    </div>
+</div>
+<script>
+function openDetail(id) {
+    document.getElementById(id).style.display = 'block';
+}
+function closeDetail(id) {
+    document.getElementById(id).style.display = 'none';
+}
+</script>
+</body>
+</html>

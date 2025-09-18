@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindBridge</title>
+  <link rel="stylesheet" href="../2-styles/styles.css">
+</head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindBot - AI Mental Health Support | MindBridge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .chatbot-container {
+            max-width: 800px;
+            margin: 100px auto 0;
+            padding: 20px;
+            height: calc(100vh - 120px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+        }
+
+        .chatbot-header h2 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .online-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #4ecdc4;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .chat-area {
+            flex: 1;
+            background: #181818;
+            padding: 20px;
+            overflow-y: auto;
+            border-left: 1px solid #666
+            border-right: 1px solid #666;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .bot-avatar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .user-avatar {
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 15px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .bot-message {
+            background: #181818;
+            border: 1px solid #666;
+            margin-left: 10px;
+        }
+
+        .user-message {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin-right: 10px;
+        }
+
+        .message-time {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 5px;
+        }
+
+        .quick-responses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .quick-response {
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .quick-response:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        .chat-input {
+            background: #181818;
+            padding: 20px;
+            border-radius: 0 0 15px 15px;
+            border: 1px solid #181818;
+            border-top: none;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .message-input {
+            background: #181818;
+            flex: 1;
+            padding: 15px;
+            color: white;
+            border: 1px solid #666;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .message-input:focus {
+            border-color: #667eea;
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            background: #181818;
+            border-radius: 15px;
+            margin-left: 50px;
+            max-width: 200px;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .typing-dots span {
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .mood-tracker {
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .mood-options {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .mood-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .mood-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .coping-strategies {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .coping-strategies h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .coping-strategies ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .coping-strategies li {
+            color: #856404;
+            margin-bottom: 5px;
+        }
+
+        .crisis-alert {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .crisis-alert h4 {
+            margin-bottom: 10px;
+        }
+
+        .crisis-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .crisis-contact {
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .chatbot-container {
+                margin-top: 80px;
+                padding: 10px;
+                height: calc(100vh - 100px);
+            }
+
+            .message-content {
+                max-width: 85%;
+            }
+
+            .input-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .message-input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><i class="fas fa-brain"></i> MindBridge</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="1-index.html">Home</a></li>
+                <li><a href="2-dashboard.html">Dashboard</a></li>
+                <li><a href="3-habit-tracker.html">Habit Tracker</a></li>
+                <li><a href="5-resource.html">Resources</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <h2><i class="fas fa-robot"></i> MindBot - Your AI Mental Health Companion</h2>
+            <div class="online-status">
+                <div class="status-dot"></div>
+                <span>Online - Available 24/7</span>
+            </div>
+        </div>
+
+        <div class="chat-area" id="chatArea">
+            <div class="message">
+                <div class="message-avatar bot-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content bot-message">
+                    <p>Hello! I'm MindBot, your AI mental health companion. I'm here to provide support, coping strategies, and a listening ear whenever you need it. How are you feeling today?</p>
+                    <div class="message-time">Just now</div>
+                    <div class="quick-responses">
+                        <button class="quick-response" onclick="sendQuickResponse('I\'m feeling anxious')">😰 Anxious</button>
+                        <button class="quick-response" onclick="sendQuickResponse('I\'m feeling sad')">😢 Sad</button>
+                        <button class="quick-response" onclick="sendQuickResponse('I\'m stressed about exams')">📚 Stressed</button>
+                        <button class="quick-response" onclick="sendQuickResponse('I need coping strategies')">🛠️ Need Help</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="typing-indicator" id="typingIndicator">
+                <span>MindBot is typing</span>
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <div class="input-container">
+                <input type="text" class="message-input" id="messageInput" placeholder="Type your message here..." onkeypress="handleKeyPress(event)">
+                <button class="send-btn" onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatArea = document.getElementById('chatArea');
+        const messageInput = document.getElementById('messageInput');
+        const typingIndicator = document.getElementById('typingIndicator');
+
+        // Predefined responses based on mental health keywords
+        const responses = {
+            anxiety: {
+                message: "I understand you're feeling anxious. Anxiety is very common among students. Here are some immediate coping strategies that might help:",
+                coping: [
+                    "Try the 4-7-8 breathing technique: inhale for 4, hold for 7, exhale for 8",
+                    "Use the 5-4-3-2-1 grounding technique: name 5 things you see, 4 you hear, 3 you feel, 2 you smell, 1 you taste",
+                    "Progressive muscle relaxation: tense and release muscle groups",
+                    "Take a short walk or do light exercise"
+                ]
+            },
+            depression: {
+                message: "I'm sorry you're feeling this way. Depression can make everything feel overwhelming. Remember that you're not alone, and these feelings are temporary.",
+                coping: [
+                    "Try to maintain a daily routine, even a simple one",
+                    "Get some sunlight and fresh air when possible",
+                    "Reach out to a friend or family member",
+                    "Consider gentle exercise like walking or stretching",
+                    "Practice self-compassion and avoid self-criticism"
+                ]
+            },
+            stress: {
+                message: "Academic stress is very common. Let's work on some strategies to help you manage it better:",
+                coping: [
+                    "Break large tasks into smaller, manageable chunks",
+                    "Use time management techniques like the Pomodoro method",
+                    "Take regular breaks during study sessions",
+                    "Practice deep breathing or meditation",
+                    "Prioritize tasks and focus on what's most important"
+                ]
+            },
+            lonely: {
+                message: "Feeling lonely can be really difficult. Many students experience this, especially during transitions or stressful times.",
+                coping: [
+                    "Join student clubs or organizations aligned with your interests",
+                    "Attend campus events or activities",
+                    "Reach out to classmates for study groups",
+                    "Consider volunteering in your community",
+                    "Use video calls to connect with friends and family"
+                ]
+            },
+            crisis: {
+                message: "I'm concerned about what you're sharing. If you're having thoughts of self-harm or suicide, please reach out for immediate help.",
+                contacts: [
+                    "National Suicide Prevention Lifeline: 988",
+                    "Crisis Text Line: Text HOME to 741741",
+                    "Campus Counseling Center Emergency Line",
+                    "Local Emergency Services: 911"
+                ]
+            }
+        };
+
+        function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) return;
+
+            addMessage('user', message);
+            messageInput.value = '';
+            
+            setTimeout(() => {
+                showTyping();
+                setTimeout(() => {
+                    hideTyping();
+                    generateResponse(message);
+                }, 2000);
+            }, 500);
+        }
+
+        function sendQuickResponse(response) {
+            addMessage('user', response);
+            setTimeout(() => {
+                showTyping();
+                setTimeout(() => {
+                    hideTyping();
+                    generateResponse(response);
+                }, 1500);
+            }, 500);
+        }
+
+        function addMessage(type, content, isSpecial = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            
+            const avatar = document.createElement('div');
+            avatar.className = `message-avatar ${type}-avatar`;
+            avatar.innerHTML = type === 'user' ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
+            
+            const messageContent = document.createElement('div');
+            messageContent.className = `message-content ${type}-message`;
+            
+            if (isSpecial) {
+                messageContent.innerHTML = content;
+            } else {
+                messageContent.innerHTML = `
+                    <p>${content}</p>
+                    <div class="message-time">${getCurrentTime()}</div>
+                `;
+            }
+            
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(messageContent);
+            
+            chatArea.insertBefore(messageDiv, typingIndicator);
+            scrollToBottom();
+        }
+
+        function generateResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            let response = "Thank you for sharing. I'm here to listen and support you.";
+            let specialContent = null;
+
+            // Check for crisis keywords
+            if (message.includes('suicide') || message.includes('kill myself') || message.includes('end it all') || message.includes('not worth living')) {
+                const crisisData = responses.crisis;
+                specialContent = `
+                    <div class="crisis-alert">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Immediate Support Needed</h4>
+                        <p>${crisisData.message}</p>
+                        <div class="crisis-contacts">
+                            ${crisisData.contacts.map(contact => `<div class="crisis-contact">${contact}</div>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            // Check for anxiety
+            else if (message.includes('anxious') || message.includes('anxiety') || message.includes('worried') || message.includes('panic')) {
+                const anxietyData = responses.anxiety;
+                response = anxietyData.message;
+                specialContent = `
+                    <p>${response}</p>
+                    <div class="coping-strategies">
+                        <h4><i class="fas fa-lightbulb"></i> Coping Strategies for Anxiety:</h4>
+                        <ul>
+                            ${anxietyData.coping.map(strategy => `<li>${strategy}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="message-time">${getCurrentTime()}</div>
+                `;
+            }
+            // Check for depression
+            else if (message.includes('sad') || message.includes('depressed') || message.includes('hopeless') || message.includes('empty')) {
+                const depressionData = responses.depression;
+                response = depressionData.message;
+                specialContent = `
+                    <p>${response}</p>
+                    <div class="coping-strategies">
+                        <h4><i class="fas fa-heart"></i> Ways to Support Yourself:</h4>
+                        <ul>
+                            ${depressionData.coping.map(strategy => `<li>${strategy}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="message-time">${getCurrentTime()}</div>
+                `;
+            }
+            // Check for stress
+            else if (message.includes('stress') || message.includes('overwhelmed') || message.includes('exams') || message.includes('pressure')) {
+                const stressData = responses.stress;
+                response = stressData.message;
+                specialContent = `
+                    <p>${response}</p>
+                    <div class="coping-strategies">
+                        <h4><i class="fas fa-brain"></i> Stress Management Techniques:</h4>
+                        <ul>
+                            ${stressData.coping.map(strategy => `<li>${strategy}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="message-time">${getCurrentTime()}</div>
+                `;
+            }
+            // Check for loneliness
+            else if (message.includes('lonely') || message.includes('alone') || message.includes('isolated')) {
+                const lonelyData = responses.lonely;
+                response = lonelyData.message;
+                specialContent = `
+                    <p>${response}</p>
+                    <div class="coping-strategies">
+                        <h4><i class="fas fa-users"></i> Ways to Connect:</h4>
+                        <ul>
+                            ${lonelyData.coping.map(strategy => `<li>${strategy}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="message-time">${getCurrentTime()}</div>
+                `;
+            }
+            // Mood tracking request
+            else if (message.includes('mood') || message.includes('track') || message.includes('feeling')) {
+                specialContent = `
+                    <div class="mood-tracker">
+                        <h4><i class="fas fa-chart-line"></i> How are you feeling right now?</h4>
+                        <p>Click on an emoji to log your mood:</p>
+                        <div class="mood-options">
+                            <button class="mood-btn" onclick="logMood('very-happy', '😄')">😄</button>
+                            <button class="mood-btn" onclick="logMood('happy', '😊')">😊</button>
+                            <button class="mood-btn" onclick="logMood('neutral', '😐')">😐</button>
+                            <button class="mood-btn" onclick="logMood('sad', '😢')">😢</button>
+                            <button class="mood-btn" onclick="logMood('very-sad', '😭')">😭</button>
+                        </div>
+                    </div>
+                    <div class="message-time">${getCurrentTime()}</div>
+                `;
+            }
+
+            if (specialContent) {
+                addMessage('bot', specialContent, true);
+            } else {
+                addMessage('bot', response);
+            }
+
+            // Add follow-up suggestions
+            setTimeout(() => {
+                const followUp = `
+                    <p>Is there anything specific you'd like to talk about or any other way I can help you today?</p>
+                    <div class="quick-responses">
+                        <button class="quick-response" onclick="sendQuickResponse('I want to practice breathing exercises')">🫁 Breathing</button>
+                        <button class="quick-response" onclick="sendQuickResponse('Tell me about meditation')">🧘 Meditation</button>
+                        <button class="quick-response" onclick="sendQuickResponse('I need study tips')">📖 Study Tips</button>
+                        <button class="quick-response" onclick="sendQuickResponse('I\'m feeling better now')">✅ Better</button>
+                    </div>
+                    <div class="message-time">${getCurrentTime()}</div>
+                `;
+                addMessage('bot', followUp, true);
+            }, 3000);
+        }
+
+        function logMood(moodLevel, emoji) {
+            // Log mood to local storage or send to server
+            const moodData = {
+                mood: moodLevel,
+                emoji: emoji,
+                timestamp: new Date().toISOString(),
+                date: new Date().toLocaleDateString()
+            };
+            
+            // Save to local storage
+            let moodHistory = JSON.parse(localStorage.getItem('moodHistory') || '[]');
+            moodHistory.push(moodData);
+            localStorage.setItem('moodHistory', JSON.stringify(moodHistory));
+            
+            // Send confirmation
+            addMessage('bot', `Thank you for logging your mood ${emoji}. I've recorded that you're feeling ${moodLevel.replace('-', ' ')} today. Tracking your mood over time can help identify patterns and triggers.`);
+            
+            // Provide appropriate response based on mood
+            if (moodLevel.includes('sad')) {
+                setTimeout(() => {
+                    addMessage('bot', "I notice you're feeling down today. Would you like me to suggest some activities that might help improve your mood?");
+                }, 2000);
+            } else if (moodLevel.includes('happy')) {
+                setTimeout(() => {
+                    addMessage('bot', "That's wonderful to hear! It's great that you're feeling positive today. What's been contributing to your good mood?");
+                }, 2000);
+            }
+        }
+
+        function showTyping() {
+            typingIndicator.style.display = 'flex';
+            scrollToBottom();
+        }
+
+        function hideTyping() {
+            typingIndicator.style.display = 'none';
+        }
+
+        function getCurrentTime() {
+            return new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        }
+
+        function scrollToBottom() {
+            chatArea.scrollTop = chatArea.scrollHeight;
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Initialize with welcome message
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                const welcomeMessage = `
+                    <p>I use evidence-based techniques from Cognitive Behavioral Therapy (CBT) and mindfulness practices to help support your mental health journey. Remember:</p>
+                    <ul>
+                        <li>I'm available 24/7 for support</li>
+                        <li>Our conversations are confidential</li>
+                        <li>I'm not a replacement for professional therapy</li>
+                        <li>If you're in crisis, please contact emergency services</li>
+                    </ul>
+                    <p>What would you like to talk about today?</p>
+                    <div class="message-time">${getCurrentTime()}</div>
+                `;
+                addMessage('bot', welcomeMessage, true);
+            }, 2000);
+        });
+    </script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

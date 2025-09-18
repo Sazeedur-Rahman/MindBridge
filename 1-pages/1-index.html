@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindBridge - Digital Mental Health Support for Students</title>
+    <link rel="stylesheet" href="../2-styles/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><i class="fas fa-brain"></i> MindBridge</h2>
+            </div>f
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!-- FIXED: Changed from link to button with onclick -->
+                <li><button onclick="openStudentLoginModal()" class="btn-login">Student Login</button></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Landing Page Content -->
+    <div id="landingPage">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Your Mental Health Journey Starts Here</h1>
+                    <p>MindBridge provides comprehensive digital mental health support designed specifically for students in higher education. Access personalized care, evidence-based interventions, and 24/7 support when you need it most.</p>
+                    <div class="hero-buttons">
+                        <a href="2-dashboard.html" class="btn btn-primary">Get Started</a>              
+                        <a href="#features" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <h3>38%</h3>
+                            <p>of college students experience depression symptoms</p>
+                        </div> 
+                        <div class="stat">
+                            <h3>24/7</h3>
+                            <p>Available support when you need it</p>
+                        </div>
+                        <div class="stat">
+                            <h3>85%</h3>
+                            <p>User satisfaction rate with digital interventions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-graphic">
+                        <div class="mental-health-visual">
+                            <i class="fas fa-heart pulse"></i>
+                            <i class="fas fa-brain thinking"></i>
+                            <i class="fas fa-users community"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Comprehensive Mental Health Support</h2>
+                    <p>Our platform combines evidence-based digital interventions with personalized care to support your mental wellness journey</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Mood Tracking & Analytics</h3>
+                        <p>Monitor your emotional well-being with advanced mood tracking tools and receive personalized insights based on your patterns.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI-Powered Support</h3>
+                        <p>24/7 AI chatbot provides immediate support, coping strategies, and guidance during moments of distress.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Teletherapy Integration</h3>
+                        <p>Connect with licensed mental health professionals through secure video conferencing for personalized therapy sessions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Educational Resources</h3>
+                        <p>Access comprehensive mental health education materials, self-help guides, and evidence-based coping techniques.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Peer Support Network</h3>
+                        <p>Connect with other students in moderated support groups and peer-to-peer forums for shared experiences and encouragement.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3>Crisis Intervention</h3>
+                        <p>Immediate access to crisis support resources, emergency contacts, and professional intervention when needed.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <h3>Medication Management</h3>
+                        <p>Track medications, set reminders, and monitor side effects with integrated medication management tools.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Appointment Scheduling</h3>
+                        <p>Seamlessly schedule, reschedule, and manage appointments with campus counselors and mental health professionals.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Why MindBridge?</h2>
+                        <p>Mental health challenges among college students have reached crisis levels, with 40% of high school students reporting persistent feelings of sadness or hopelessness. Traditional campus counseling services are overwhelmed, with long wait times and limited resources.</p>
+                        
+                        <div class="about-stats">
+                            <div class="about-stat">
+                                <h4>31.9%</h4>
+                                <p>of teens have anxiety disorders</p>
+                            </div>
+                            <div class="about-stat">
+                                <h4>20%</h4>
+                                <p>of adolescents experience major depression</p>
+                            </div>
+                            <div class="about-stat">
+                                <h4>22%</h4>
+                                <p>can't afford mental health services</p>
+                            </div>
+                        </div>
+
+                        <h3>Our Evidence-Based Approach</h3>
+                        <p>MindBridge leverages the latest research in digital mental health interventions, showing a medium effect size of 0.55 for depression and 0.46 for anxiety reduction. Our platform integrates:</p>
+                        
+                        <ul class="approach-list">
+                            <li><strong>Cognitive Behavioral Therapy (CBT)</strong> - Proven digital CBT modules for anxiety and depression</li>
+                            <li><strong>Mindfulness-Based Interventions</strong> - Guided meditation and stress reduction techniques</li>
+                            <li><strong>Peer Support Models</strong> - Community-driven healing and shared experiences</li>
+                            <li><strong>AI-Enhanced Personalization</strong> - Tailored interventions based on individual patterns</li>
+                        </ul>
+                    </div>
+                    <div class="about-visual">
+                        <div class="research-highlight">
+                            <h4>Research-Backed Results</h4>
+                            <div class="research-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Digital interventions reduce depression symptoms by 55%</span>
+                            </div>
+                            <div class="research-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>24/7 availability increases help-seeking behavior</span>
+                            </div>
+                            <div class="research-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cost-effective solution for campus counseling</span>
+                            </div>
+                            <div class="research-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Reduces stigma associated with mental health care</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources" class="resources">
+            <div class="container">
+                <h2>Mental Health Resources</h2>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <h3>Crisis Support</h3>
+                        <div class="crisis-contacts">
+                            <div class="crisis-contact">
+                                <strong>National Suicide Prevention Lifeline</strong>
+                                <p>988 - Available 24/7</p>
+                            </div>
+                            <div class="crisis-contact">
+                                <strong>Crisis Text Line</strong>
+                                <p>Text HOME to 741741</p>
+                            </div>
+                            <div class="crisis-contact">
+                                <strong>Campus Counseling</strong>
+                                <p>Check your university's emergency mental health services</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resource-card">
+                        <h3>Self-Help Tools</h3>
+                        <ul>
+                            <li>Guided meditation sessions</li>
+                            <li>Breathing exercises</li>
+                            <li>Stress management techniques</li>
+                            <li>Sleep hygiene guides</li>
+                            <li>Academic stress resources</li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <h3>Educational Materials</h3>
+                        <ul>
+                            <li>Understanding anxiety and depression</li>
+                            <li>Coping with academic pressure</li>
+                            <li>Building resilience</li>
+                            <li>Social connection strategies</li>
+                            <li>Mental health myths debunked</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h2>Get in Touch</h2>
+                        <p>Have questions about our platform or need immediate support? We're here to help.</p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h4>Email Support</h4>
+                                    <p>support@mindbridge.edu</p>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>Phone Support</h4>
+                                    <p>1-800-MINDBRIDGE</p>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fas fa-comments"></i>
+                                <div>
+                                    <h4>Live Chat</h4>
+                                    <p>Available 24/7 through the platform</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <select required>
+                                    <option value="">Select Topic</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="technical">Technical Support</option>
+                                    <option value="crisis">Crisis Support</option>
+                                    <option value="partnership">Partnership</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Your Message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3><i class="fas fa-brain"></i> MindBridge</h3>
+                        <p>Empowering students with accessible, evidence-based mental health support for a brighter academic journey.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#resources">Resources</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#contact">Contact Us</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="help.html">Help Center</a></li>
+                            <li><a href="crisis.html">Crisis Resources</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Emergency</h4>
+                        <p><strong>If you're in crisis:</strong></p>
+                        <p>Call 988 (Suicide Prevention Lifeline)</p>
+                        <p>Text HOME to 741741</p>
+                        <p>Or contact your campus emergency services</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 MindBridge. All rights reserved. | This platform is not a substitute for professional medical advice.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Dashboard (Hidden by default) -->
+    <div id="dashboard" class="dashboard hidden">
+        <nav class="navbar dashboard-nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2><i class="fas fa-brain"></i> MindBridge</h2>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#tracker">Habit Tracker</a></li>
+                    <li><a href="#chatbot">Chatbot</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#" onclick="logout()">Back to Home</a></li>
+                    <li><button onclick="logout()" class="btn-login logout-btn">Logout</button></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="dashboard-content">
+            <div class="welcome-banner">
+                <h1>Welcome back <span id="userName">Student</span>! 👋</h1>
+                <p>Here's your mental health journey overview for today</p>
+                <div class="dashboard-actions">
+                    <button class="dashboard-btn">
+                        <i class="fas fa-robot"></i> Talk to MindBot
+                    </button>
+                    <button class="dashboard-btn">
+                        <i class="fas fa-chart-line"></i> Track Habits
+                    </button>
+                    <button class="dashboard-btn">
+                        <i class="fas fa-calendar"></i> Book Session
+                    </button>
+                </div>
+            </div>
+
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>8.2</h3>
+                        <p>Mental Health Score</p>
+                        <small style="color: var(--color-success);">↗ +0.5 from last week</small>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%);">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>4/5</h3>
+                        <p>Habits Completed</p>
+                        <small style="color: var(--color-success);">↗ 80% completion rate</small>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, var(--color-warning) 0%, var(--color-orange-400) 100%);">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>😊</h3>
+                        <p>Average Mood</p>
+                        <small style="color: var(--color-success);">↗ Good this week</small>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, var(--color-red-400) 0%, var(--color-red-500) 100%);">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>12</h3>
+                        <p>AI Conversations</p>
+                        <small style="color: var(--color-success);">↗ +3 this week</small>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Student Login Modal -->
+    <div id="studentLoginOverlay" class="student-login-overlay">
+        <div class="student-login-modal">
+            <h2>Student Login</h2>
+            <form id="studentLoginForm" onsubmit="handleStudentLogin(event)">
+  <div class="student-form-group">
+    <label for="studentUsername">Username <span class="student-required">*</span></label>
+    <input type="text" id="studentUsername" name="username" required>
+  </div>
+
+  <div class="student-form-group">
+    <label for="studentEmail">Email ID <span class="student-required">*</span></label>
+    <input type="email" id="studentEmail" name="email" required>
+  </div>
+
+  <div class="student-form-group">
+    <label for="studentPassword">Password <span class="student-required">*</span></label>
+    <input type="password" id="studentPassword" name="password" required>
+  </div>
+
+  <div class="student-login-buttons">
+    <button type="submit" class="student-btn-login">Login</button>
+    <button type="button" class="student-btn-cancel" onclick="closeStudentLoginModal()">Cancel</button>
+  </div>
+     </form>
+</div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Student Login System JavaScript
+        function openStudentLoginModal() {
+            console.log("Opening student login modal");
+            const overlay = document.getElementById('studentLoginOverlay');
+            if (overlay) {
+                overlay.classList.add('active');
+                console.log("Modal opened successfully");
+            } else {
+                console.error("Student login overlay not found");
+            }
+        }
+
+        function closeStudentLoginModal() {
+            console.log("Closing student login modal");
+            const overlay = document.getElementById('studentLoginOverlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+                resetStudentForm();
+            }
+        }
+
+        function resetStudentForm() {
+            document.getElementById('studentLoginForm').reset();
+            const errorMessages = document.querySelectorAll('.student-error-message');
+            const inputs = document.querySelectorAll('.student-form-group input');
+            
+            errorMessages.forEach(msg => {
+                msg.style.display = 'none';
+            });
+            
+            inputs.forEach(input => {
+                input.classList.remove('error');
+            });
+        }
+
+        function validateStudentField(fieldId, errorId, message) {
+            const field = document.getElementById(fieldId);
+            const error = document.getElementById(errorId);
+            
+            if (!field.value.trim()) {
+                field.classList.add('error');
+                error.textContent = message;
+                error.style.display = 'block';
+                return false;
+            } else {
+                field.classList.remove('error');
+                error.style.display = 'none';
+                return true;
+            }
+        }
+
+        function validateStudentEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function handleStudentLogin(event) {
+            event.preventDefault();
+            console.log("Login form submitted");
+            
+            resetStudentForm();
+            
+            const usernameValid = validateStudentField('studentUsername', 'studentUsernameError', 'Username is required');
+            const emailField = document.getElementById('studentEmail');
+            const emailError = document.getElementById('studentEmailError');
+            const passwordValid = validateStudentField('studentPassword', 'studentPasswordError', 'Password is required');
+            
+            let emailValid = true;
+            if (!emailField.value.trim()) {
+                emailField.classList.add('error');
+                emailError.textContent = 'Email is required';
+                emailError.style.display = 'block';
+                emailValid = false;
+            } else if (!validateStudentEmail(emailField.value)) {
+                emailField.classList.add('error');
+                emailError.textContent = 'Please enter a valid email address';
+                emailError.style.display = 'block';
+                emailValid = false;
+            } else {
+                emailField.classList.remove('error');
+                emailError.style.display = 'none';
+            }
+            
+            if (usernameValid && emailValid && passwordValid) {
+                const username = document.getElementById('studentUsername').value;
+                document.getElementById('userName').textContent = username;
+                
+                // Hide landing page and show dashboard
+                document.getElementById('landingPage').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+                
+                closeStudentLoginModal();
+                console.log("Login successful for:", username);
+            }
+        }
+
+        function logout() {
+            document.getElementById('landingPage').classList.remove('hidden');
+            document.getElementById('dashboard').classList.add('hidden');
+            resetStudentForm();
+        }
+        function handleStudentLogin(event) {
+             event.preventDefault(); // stop reload
+             const username = document.getElementById("studentUsername").value;
+              const email = document.getElementById("studentEmail").value;
+              const password = document.getElementById("studentPassword").value;
+
+               if (!username || !email || !password) {
+                 alert("Please fill in all fields!");
+                   return;
+              }
+               // Save username in localStorage
+                localStorage.setItem("username", username);
+               // Redirect to dashboard
+             window.location.href = "2-dashboard.html";
+}
+            
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            const overlay = document.getElementById('studentLoginOverlay');
+            if (e.target === overlay) {
+                closeStudentLoginModal();
+            }
+        });
+
+        // Real-time validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const usernameField = document.getElementById('studentUsername');
+            const emailField = document.getElementById('studentEmail');
+            const passwordField = document.getElementById('studentPassword');
+
+            if (usernameField) {
+                usernameField.addEventListener('input', function() {
+                    if (this.value.trim()) {
+                        this.classList.remove('error');
+                        document.getElementById('studentUsernameError').style.display = 'none';
+                    }
+                });
+            }
+
+            if (emailField) {
+                emailField.addEventListener('input', function() {
+                    if (this.value.trim() && validateStudentEmail(this.value)) {
+                        this.classList.remove('error');
+                        document.getElementById('studentEmailError').style.display = 'none';
+                    }
+                });
+            }
+
+            if (passwordField) {
+                passwordField.addEventListener('input', function() {
+                    if (this.value.trim()) {
+                        this.classList.remove('error');
+                        document.getElementById('studentPasswordError').style.display = 'none';
+                    }
+                });
+            }
+        });
+
+        console.log("Student login system loaded");
+    </script>
+</body>
+</html>
+
