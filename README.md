@@ -184,4 +184,4 @@ This platform is designed for educational institutions and mental health organiz
 
 ---
 
-**Disclaimer**: This platform is designed to supplement, not replace, professional mental health services. Users experiencing crisis situations should contact emergency services immediately.
+**Disclaimer**: This platform is designed to supplement, not replace, professional mental health services. Users experiencing crisis situations should contact emergency services immediately.# MindBridge
