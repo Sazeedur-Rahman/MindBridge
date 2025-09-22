@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MindBridge</title>
-  <link rel="stylesheet" href="../2-styles/styles.css">
+  <link rel="stylesheet" href="../styles/styles.css">
 </head>
 
 <head>
@@ -388,10 +388,10 @@
                 <h2><i class="fas fa-brain"></i> MindBridge</h2>
             </div>
             <ul class="nav-links">
-                <li><a href="3-habit-tracker.html">Habit Tracker</a></li>
-                <li><a href="4-chatbot.html">Chatbot</a></li>
-                <li><a href="5-resource.html">Resources</a></li>
-                <li><a href="1-index.html">Back to Home</a></li>
+                <li><a href="habit-tracker.html">Habit Tracker</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+                <li><a href="resource.html">Resources</a></li>
+                <li><a href="index.html">Back to Home</a></li>
                 <li><button id="logoutBtn" class="btn-login">Logout</button></li>
             </ul>
             <div class="hamburger">
@@ -411,10 +411,10 @@
                     <p>Here's your mental health journey overview for today</p>
                 </div>
                 <div class="quick-actions">
-                    <a href="4-chatbot.html" class="quick-action-btn">
+                    <a href="chatbot.html" class="quick-action-btn">
                         <i class="fas fa-robot"></i> Talk to MindBot
                     </a>
-                    <a href="3-habit-tracker.html" class="quick-action-btn">
+                    <a href="habit-tracker.html" class="quick-action-btn">
                         <i class="fas fa-chart-line"></i> Track Habits
                     </a>
                     <a href="#" class="quick-action-btn">
@@ -573,7 +573,7 @@
                     <div class="upcoming-sessions">
                         <div class="session-item">
                             <div class="session-info">
-                                <h4>Dr. Smith - Therapy Session</h4>
+                                <h4>Dr. Nandi - Therapy Session</h4>
                                 <p>Individual counseling session</p>
                             </div>
                             <div class="session-time">2:00 PM</div>
@@ -700,7 +700,7 @@
             // Logout functionality
     document.getElementById("logoutBtn").addEventListener("click", function () {
       localStorage.removeItem("username"); // clear saved username
-      window.location.href = "1-index.html"; // redirect back to login
+      window.location.href = "index.html"; // redirect back to login
     });
     </script>
     
